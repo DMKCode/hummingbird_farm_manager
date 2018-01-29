@@ -14,7 +14,7 @@ class CropsList extends Component {
           <h2>Crops</h2>
           {this.props.crops.map(crop => (
             <li className="list-item_crops" key={crop.name}>
-              <a onClick={this.props.onClick}>{crop.name}</a>
+              <a onClick={() => this.props.onClick(crop)}>{crop.name}</a>
             </li>
           ))}
         </ul>

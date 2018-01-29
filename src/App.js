@@ -7,6 +7,19 @@ import crops from "./data/crops.json";
 import CropsList from "./components/CropsList";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      currentCrop: {}
+    };
+  }
+
+  handleCropClick = crop => {
+    this.setState({
+      currentCrop: crop
+    });
+  };
+
   render() {
     return (
       <div>
@@ -28,7 +41,7 @@ class App extends Component {
             <GeoJSON key={field.name} data={field.boundary} />
           ))}
         </Map>
-        <CropsList crops={crops} />
+        <CropsList crops={crops} onClick={this.handleCropClick} />
       </div>
     );
   }
