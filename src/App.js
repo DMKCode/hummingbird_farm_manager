@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       currentCrop: {},
       currentField: {},
-      yieldPotential: ""
+      yieldPotential: 0,
+      error: false
     };
   }
 
@@ -21,6 +22,15 @@ class App extends Component {
     this.setState({
       currentCrop: crop
     });
+  };
+
+  handleFieldClick = field => {
+    if (!this.state.currentCrop.hasOwnProperty("name")) {
+      this.setState({ error: true });
+      return;
+    }
+
+    this.setState({ currentField: field });
   };
 
   render() {
@@ -41,7 +51,14 @@ class App extends Component {
         >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {farm.fields.map(field => (
-            <GeoJSON key={field.name} data={field.boundary} />
+            <GeoJSON
+              color={
+                this.state.currentField.name === field.name ? "green" : "blue"
+              }
+              key={field.name}
+              data={field.boundary}
+              onClick={() => this.handleFieldClick(field)}
+            />
           ))}
         </Map>
         <CropsList crops={crops} onClick={this.handleCropClick} />
