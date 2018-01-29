@@ -3,14 +3,17 @@ import PropTypes from "prop-types";
 
 class CropsList extends Component {
   static propTypes = {
-    crops: PropTypes.object
+    crops: PropTypes.array
   };
 
   render() {
     return (
       <section className="nav">
         <ul className="list_crops">
-          <li>list item</li>
+          <h2>Crops</h2>
+          {this.props.crops.map(crop => (
+            <li className="list-item_crops" key={crop.name} />
+          ))}
         </ul>
       </section>
     );
