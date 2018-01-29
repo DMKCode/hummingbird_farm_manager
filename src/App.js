@@ -52,11 +52,14 @@ class App extends Component {
       <section className="dashboard">
         <header className="heading_dashboard">
           <h1>Farm Manager Dashboard</h1>
+          <p>
+            Welcome to the farm manager dashboard. Select a crop below to add to
+            field.
+          </p>
         </header>
-        <p>
-          Welcome to the farm manager dashboard. Select a crop below to add to
-          field.
-        </p>
+        {this.state.error ? (
+          <p className="error">Please select a crop first.</p>
+        ) : null}
         <section className="content">
           <Map className="map" center={farm.centre.coordinates} zoom={13}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
