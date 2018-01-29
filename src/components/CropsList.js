@@ -12,7 +12,9 @@ class CropsList extends Component {
         <ul className="list_crops">
           <h2>Crops</h2>
           {this.props.crops.map(crop => (
-            <li className="list-item_crops" key={crop.name} />
+            <li className="list-item_crops" key={crop.name}>
+              <a>{crop.name}</a>
+            </li>
           ))}
         </ul>
       </section>
