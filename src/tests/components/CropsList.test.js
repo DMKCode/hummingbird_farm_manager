@@ -22,6 +22,7 @@ it("handles crop list item click", () => {
 
   wrapper
     .find("li")
+    .find("a")
     .first()
     .props()
     .onClick();

@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 
 class CropsList extends Component {
   static propTypes = {
-    crops: PropTypes.array
+    crops: PropTypes.array,
+    onClick: PropTypes.func
   };
 
   render() {
@@ -13,7 +14,7 @@ class CropsList extends Component {
           <h2>Crops</h2>
           {this.props.crops.map(crop => (
             <li className="list-item_crops" key={crop.name}>
-              <a>{crop.name}</a>
+              <a onClick={this.props.onClick}>{crop.name}</a>
             </li>
           ))}
         </ul>
