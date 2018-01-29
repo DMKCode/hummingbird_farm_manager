@@ -5,12 +5,15 @@ import "leaflet/dist/leaflet.css";
 import farm from "./data/farm.json";
 import crops from "./data/crops.json";
 import CropsList from "./components/CropsList";
+import Yield from "./components/Yield";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentCrop: {}
+      currentCrop: {},
+      currentField: {},
+      yieldPotential: ""
     };
   }
 
@@ -42,6 +45,11 @@ class App extends Component {
           ))}
         </Map>
         <CropsList crops={crops} onClick={this.handleCropClick} />
+        <Yield
+          yieldPotential={this.state.yieldPotential}
+          currentCrop={this.state.currentCrop}
+          currentField={this.state.currentField}
+        />
       </div>
     );
   }
