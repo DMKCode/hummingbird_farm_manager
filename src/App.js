@@ -60,7 +60,7 @@ class App extends Component {
         {this.state.error ? (
           <p className="error">Please select a crop first.</p>
         ) : null}
-        <section className="content">
+        <section>
           <Map className="map" center={farm.centre.coordinates} zoom={13}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             {farm.fields.map(field => (
@@ -74,12 +74,21 @@ class App extends Component {
               />
             ))}
           </Map>
-          <CropsList crops={crops} onClick={this.handleCropClick} />
-          <Yield
-            yieldPotential={this.state.yieldPotential}
-            currentCrop={this.state.currentCrop}
-            currentField={this.state.currentField}
-          />
+          <section className="content">
+            <header className="heading_yield">
+              {this.state.currentCrop.name ? (
+                <button onClick={this.handleRemoveCrop}>
+                  Remove: {this.state.currentCrop.name}
+                </button>
+              ) : null}
+            </header>
+            <CropsList crops={crops} onClick={this.handleCropClick} />
+            <Yield
+              yieldPotential={this.state.yieldPotential}
+              currentCrop={this.state.currentCrop}
+              currentField={this.state.currentField}
+            />
+          </section>
         </section>
       </section>
     );
