@@ -49,39 +49,36 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <header>
-          <h1>Welcome to th Hummingbird starter app</h1>
+      <section className="dashboard">
+        <header className="heading_dashboard">
+          <h1>Farm Manager Dashboard</h1>
         </header>
         <p>
-          To get started, edit <code>src/App.js</code> and save to reload. This
-          is just a starter App, change it, remove things and add things however
-          you want.
+          Welcome to the farm manager dashboard. Select a crop below to add to
+          field.
         </p>
-        <Map
-          style={{ width: "500px", height: "500px" }}
-          center={farm.centre.coordinates}
-          zoom={13}
-        >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          {farm.fields.map(field => (
-            <GeoJSON
-              color={
-                this.state.currentField.name === field.name ? "green" : "blue"
-              }
-              key={field.name}
-              data={field.boundary}
-              onClick={() => this.handleFieldClick(field)}
-            />
-          ))}
-        </Map>
-        <CropsList crops={crops} onClick={this.handleCropClick} />
-        <Yield
-          yieldPotential={this.state.yieldPotential}
-          currentCrop={this.state.currentCrop}
-          currentField={this.state.currentField}
-        />
-      </div>
+        <section className="content">
+          <Map className="map" center={farm.centre.coordinates} zoom={13}>
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            {farm.fields.map(field => (
+              <GeoJSON
+                color={
+                  this.state.currentField.name === field.name ? "green" : "blue"
+                }
+                key={field.name}
+                data={field.boundary}
+                onClick={() => this.handleFieldClick(field)}
+              />
+            ))}
+          </Map>
+          <CropsList crops={crops} onClick={this.handleCropClick} />
+          <Yield
+            yieldPotential={this.state.yieldPotential}
+            currentCrop={this.state.currentCrop}
+            currentField={this.state.currentField}
+          />
+        </section>
+      </section>
     );
   }
 }

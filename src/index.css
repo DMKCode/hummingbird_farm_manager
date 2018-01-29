@@ -3,3 +3,86 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.error {
+  color: red;
+}
+.dashboard {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.heading_dashboard {
+  padding: 1em;
+  color: white;
+  background-color: black;
+  clear: left;
+  text-align: center;
+}
+
+.map {
+  width: 90%;
+  height: 500px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.content {
+  width: 100%;
+}
+
+.nav {
+  float: left;
+  width: 50%;
+  margin: 0;
+  padding: 1em;
+  border-right: 1px solid #ccc;
+}
+
+.list_crops {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-item_crops {
+  border-bottom: 1px solid #ccc;
+}
+.list-item_crops:last-child {
+  border: none;
+}
+
+.list-item_crops a {
+  text-decoration: none;
+  padding: 8px 0;
+  cursor: pointer;
+  color: #000;
+  -webkit-transition: background-color 0.3s ease;
+  -moz-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+  -ms-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  display: block;
+}
+
+.list-item_crops a:hover,
+.list-item_crops .active {
+  background: #f6f6f6;
+}
+
+.yield {
+  width: 50%;
+}
+
+.heading_yield {
+  padding: 1em;
+  background-color: black;
+}
+
+.button_remove-crop {
+  margin: 0 auto;
+}
+
+.yield-details {
+  margin-left: 55%;
+  padding: 1em;
+}
