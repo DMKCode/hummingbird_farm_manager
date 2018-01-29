@@ -14,7 +14,7 @@ class Yield extends Component {
         <div>
           <div>
             <strong>Yield Potential: </strong>
-            <p>{this.props.yieldPotential}</p>
+            {this.props.yieldPotential}
           </div>
           <h3>Yield Configuration</h3>
           <p>
