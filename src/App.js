@@ -18,6 +18,32 @@ class App extends Component {
     };
   }
 
+  componentWillMount() {
+    this.fetchData();
+  }
+
+  fetchFarm = () =>
+    fetch(`https://private-bf7f31-hummingbirdsimple.apiary-mock.com/farm`);
+
+  fetchCrops = () =>
+    fetch(`https://private-bf7f31-hummingbirdsimple.apiary-mock.com/crops`);
+
+  fetchData = () => {
+    this.fetchFarm()
+      .then(data => data.json())
+      .then(data => {
+        this.setState({ farm: data, isFetchingFarm: false });
+      })
+      .catch(error => {});
+
+    this.fetchCrops()
+      .then(data => data.json())
+      .then(data => {
+        this.setState({ crops: data, isFetchingCrops: false });
+      })
+      .catch(error => {});
+  };
+
   handleCropClick = crop => {
     this.setState({
       currentCrop: crop
