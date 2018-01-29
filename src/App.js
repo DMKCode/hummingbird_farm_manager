@@ -31,6 +31,20 @@ class App extends Component {
     }
 
     this.setState({ currentField: field });
+
+    const potentialYield = this.calculateYieldPotential(field);
+    this.setState({ yieldPotential: potentialYield, error: false });
+  };
+
+  calculateYieldPotential = field => {
+    const potentialYield =
+      this.state.currentCrop.expected_yield *
+      field.hectares /
+      (this.state.currentCrop.disease_risk_factor *
+        field.disease_susceptibility) *
+      this.state.currentCrop.price_per_tonne;
+
+    return potentialYield;
   };
 
   render() {
